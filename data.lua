@@ -10,15 +10,12 @@ end
 --- Remove references
 for _, _type in pairs(data.raw) do
     for name, p in pairs(_type) do
-        --- Remove surface conditions
-        if p.surface_conditions then
-            p.surface_conditions = nil
-        end
-        --- Remove import location
-        if p.default_import_location then
-            p.default_import_location = nil
-        end
-        --- Remove simulations
+        p.surface_conditions = nil
+        p.default_import_location = nil
+        p.spoil_result = nil
+        p.spoil_ticks = nil
+
+        --- Remove factoriopedia simulations
         if p.factoriopedia_simulation then
             for _, planet in pairs({ 'aquilo', 'fulgora', 'gleba', 'vulcanus' }) do
                 if p.factoriopedia_simulation and p.factoriopedia_simulation.planet and p.factoriopedia_simulation.planet == planet then
@@ -26,9 +23,7 @@ for _, _type in pairs(data.raw) do
                 end
             end
         end
-        --- Remove spoilage
-        p.spoil_result = nil
-        p.spoil_ticks = nil
+
         --- Remove invalid crafting categories
         if p.crafting_categories then
             for i = #p.crafting_categories, 1, -1 do
@@ -38,7 +33,8 @@ for _, _type in pairs(data.raw) do
                 end
             end
         end
-        --- Remove next upgrade
+
+        --- Remove invalid next upgrades
         if p.next_upgrade and not data.raw[p.type][p.next_upgrade] then
             p.next_upgrade = nil
         end
