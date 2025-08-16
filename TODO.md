@@ -1,2 +1,0 @@
-- [ ] Add rocket turrets to spidertron
-- [ ] infinite tech costs

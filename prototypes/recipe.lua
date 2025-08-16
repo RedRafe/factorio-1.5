@@ -1,3 +1,5 @@
+--- source: factorio/data/base/prototypes/recipe.lua
+
 return function()
     function create_recipe_parameter(number)
         data:extend({

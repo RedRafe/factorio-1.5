@@ -1,3 +1,5 @@
+--- source: factorio/data/base/prototypes/fluid.lua
+
 return function()
   function create_fluid_parameter(number)
     data:extend(

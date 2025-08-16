@@ -1,3 +1,6 @@
+--- source: factorio/data/base/prototypes/technology.lua
+
+
 return function()
     local physical_projectile_damage_1_icon = '__base__/graphics/technology/physical-projectile-damage-1.png'
     local physical_projectile_damage_2_icon = '__base__/graphics/technology/physical-projectile-damage-2.png'

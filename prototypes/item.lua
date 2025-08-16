@@ -1,3 +1,5 @@
+--- source: factorio/data/base/prototypes/item.lua
+
 return function()
     local sounds = require '__base__.prototypes.entity.sounds'
     local item_sounds = require '__base__.prototypes.item_sounds'
