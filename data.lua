@@ -1,11 +1,13 @@
 local prototypes = require 'prototypes.config'
 
+--- Remove SA prototypes
 for k, list in pairs(prototypes) do
     for _, name in pairs(list) do
         data.raw[k][name] = nil
     end
 end
 
+--- Remove references
 for _, _type in pairs(data.raw) do
     for name, p in pairs(_type) do
         --- Remove surface conditions
