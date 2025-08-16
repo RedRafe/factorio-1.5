@@ -1,11 +1,5 @@
---- Update leftover references
+--- Revert SA changes
 data.raw.character.character.animations[4] = nil
-data.raw.planet.nauvis.asteroid_spawn_definitions = nil
-data.raw.planet.nauvis.asteroid_spawn_influence = nil
-data.raw.planet.nauvis.planet_procession_set = nil
-data.raw.planet.nauvis.platform_procession_set = nil
-data.raw.planet.nauvis.procession_graphic_catalogue = nil
-data.raw.planet.nauvis.subgroup = nil
 data.raw.technology['space-science-pack'].localised_description = { 'technology-description.space-science-pack' }
 data.raw['cargo-pod']['cargo-pod'].subgroup = nil
 data.raw['character-corpse']['character-corpse'].armor_picture_mapping['mech-armor'] = nil
@@ -15,6 +9,14 @@ data.raw['rocket-silo-rocket']['rocket-silo-rocket'].inventory_size = 0
 data.raw['temporary-container']['cargo-pod-container'].subgroup = nil
 data.raw['unit-spawner']['biter-spawner'].captured_spawner_entity = nil
 data.raw['unit-spawner']['spitter-spawner'].captured_spawner_entity = nil
+
+local nauvis = data.raw.planet.nauvis
+nauvis.asteroid_spawn_definitions = nil
+nauvis.asteroid_spawn_influence = nil
+nauvis.planet_procession_set = nil
+nauvis.platform_procession_set = nil
+nauvis.procession_graphic_catalogue = nil
+nauvis.subgroup = nil
 
 local rocket_silo = data.raw['rocket-silo']['rocket-silo']
 rocket_silo.launch_to_space_platforms = false
