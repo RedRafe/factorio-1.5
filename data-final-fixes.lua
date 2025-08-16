@@ -1,0 +1,1 @@
+--log(serpent.block(data.raw['assembling-machine']['assembling-machine-2']))

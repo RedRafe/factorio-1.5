@@ -1,0 +1,14 @@
+{
+  "name": "factorio-1.5",
+  "version": "0.1.0",
+  "title": "Factorio 1.5",
+  "author": "RedRafe",
+  "source": "https://github.com/RedRafe/factorio-1.5",
+  "homepage": "https://mods.factorio.com/user/RedRafe",
+  "factorio_version": "2.0",
+  "dependencies": [
+    "base >= 2.0.0",
+    "space-age"
+  ],
+  "description": "In between 1.1 and Space Age"
+}
