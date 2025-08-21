@@ -9,7 +9,7 @@ data:extend({
         richness = true,
         order = 'm-a',
         category = 'resource',
-        localised_name = {'', '[img=utility/resource_editor_icon] ', { 'entity-name.mixed-ore' }}
+        localised_name = {'', '[img=utility/resource_editor_icon] ', { 'entity-name.mixed-ore' }},
     }
 })
 data.raw.planet.nauvis.map_gen_settings.autoplace_controls['mixed-ore'] = {}
@@ -48,6 +48,7 @@ for i, ore in pairs({
     local base = table.deepcopy(data.raw.resource[ore.name])
     base.name = f('mixed-%d-%s', i, ore.name)
     base.localised_name = { 'entity-name.'..ore.name }
+    base.hidden_in_factoriopedia = true
     base.autoplace = {
         probability_expression = '(100 * var(\'control:mixed-ore:richness\')) * ((lower < ore) & (ore < upper))',
         richness_expression = 'random_penalty{ x = x, y = y, source = 10000, seed = map_seed, amplitude = 3000}',

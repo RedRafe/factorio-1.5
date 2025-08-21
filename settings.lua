@@ -27,4 +27,11 @@ data:extend({
         default_value = true,
         order = 'o-[loaders]'
     },
+    {
+        type = 'bool-setting',
+        name = 'f15-fusion-fuel',
+        setting_type = 'startup',
+        default_value = false,
+        order = 'o-[fusion-fuel]'
+    },
 })

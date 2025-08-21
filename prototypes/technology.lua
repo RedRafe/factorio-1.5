@@ -6160,6 +6160,32 @@ return function()
     data:extend({
         {
             type = 'technology',
+            name = 'braking-force-8',
+            icons = util.technology_icon_constant_braking_force('__base__/graphics/technology/braking-force.png'),
+            effects = {
+                {
+                    type = 'train-braking-force-bonus',
+                    modifier = 0.10,
+                },
+            },
+            prerequisites = { 'braking-force-7', 'space-science-pack' },
+            unit = {
+                count_formula = '750*(L-6)',
+                ingredients = {
+                    { 'automation-science-pack', 1 },
+                    { 'logistic-science-pack', 1 },
+                    { 'chemical-science-pack', 1 },
+                    { 'production-science-pack', 1 },
+                    { 'utility-science-pack', 1 },
+                    { 'space-science-pack', 1 },
+                },
+                time = 60,
+            },
+            upgrade = true,
+            order = 'productivity',
+        },
+        {
+            type = 'technology',
             name = 'worker-robots-storage-4',
             icons = util.technology_icon_constant_capacity('__base__/graphics/technology/worker-robots-storage.png'),
             effects = {

@@ -53,6 +53,7 @@ return function()
         'metallurgy-or-assembling',
         'electronics-or-assembling',
         'cryogenics-or-assembling',
+        'crafting-with-fluid-or-metallurgy',
     }
     crafters['assembling-machine-3'].crafting_categories = {
         'parameters',
@@ -63,6 +64,7 @@ return function()
         'metallurgy-or-assembling',
         'electronics-or-assembling',
         'cryogenics-or-assembling',
+        'crafting-with-fluid-or-metallurgy',
     }
     crafters['biochamber'].energy_source = table.deepcopy(crafters['chemical-plant'].energy_source)
     crafters['biochamber'].crafting_categories = {
