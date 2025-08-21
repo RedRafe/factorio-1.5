@@ -5,6 +5,7 @@ return function()
     local item_sounds = require '__base__.prototypes.item_sounds'
     local item_tints = require '__base__.prototypes.item-tints'
     local simulations = require '__base__.prototypes.factoriopedia-simulations'
+    local space_age_item_sounds = require '__space-age__.prototypes.item_sounds'
 
     function create_item_parameter(number)
         data:extend({
@@ -1418,7 +1419,7 @@ return function()
             inventory_move_sound = item_sounds.science_inventory_move,
             pick_sound = item_sounds.science_inventory_pickup,
             drop_sound = item_sounds.science_inventory_move,
-            stack_size = 2000,
+            stack_size = 200,
             weight = 1 * kg,
             durability = 1,
             durability_description_key = 'description.science-pack-remaining-amount-key',
@@ -4658,20 +4659,20 @@ return function()
             fuel_value = '100kJ',
         },
         {
-    type = "item",
-    name = "carbon",
-    icon = "__space-age__/graphics/icons/carbon.png",
-    fuel_value = "2MJ",
-    fuel_category = "chemical",
-    subgroup = "raw-material",
-    order = "b[chemistry]-g[carbon]",
-    inventory_move_sound = item_sounds.resource_inventory_move,
-    pick_sound = item_sounds.resource_inventory_pickup,
-    drop_sound = item_sounds.resource_inventory_move,
-    stack_size = 50,
-    weight = 1 * kg,
-    random_tint_color = item_tints.yellowing_coal
-  },
+            type = 'item',
+            name = 'carbon',
+            icon = '__space-age__/graphics/icons/carbon.png',
+            fuel_value = '2MJ',
+            fuel_category = 'chemical',
+            subgroup = 'raw-material',
+            order = 'b[chemistry]-g[carbon]',
+            inventory_move_sound = item_sounds.resource_inventory_move,
+            pick_sound = item_sounds.resource_inventory_pickup,
+            drop_sound = item_sounds.resource_inventory_move,
+            stack_size = 50,
+            weight = 1 * kg,
+            random_tint_color = item_tints.yellowing_coal,
+        },
         {
             type = 'item',
             name = 'big-mining-drill',
@@ -4923,6 +4924,66 @@ return function()
             stack_size = 100,
             weight = 2 * kg,
             random_tint_color = item_tints.bluish_concrete,
+        },
+        {
+            type = 'item',
+            name = 'foundation',
+            icon = '__space-age__/graphics/icons/foundation.png',
+            subgroup = 'terrain',
+            order = 'c[landfill]-g[foundation]',
+            inventory_move_sound = item_sounds.metal_large_inventory_move,
+            pick_sound = item_sounds.metal_large_inventory_pickup,
+            drop_sound = item_sounds.metal_large_inventory_move,
+            stack_size = 50,
+            weight = 20 * kg,
+            place_as_tile = {
+                result = 'foundation',
+                condition_size = 1,
+                condition = { layers = {} },
+                tile_condition = {
+                    'water',
+                    'deepwater',
+                    'water-green',
+                    'deepwater-green', -- all water
+                    'water-mud',
+                    'water-shallow', -- all shallows
+                    'wetland-light-green-slime',
+                    'wetland-green-slime',
+                    'wetland-light-dead-skin',
+                    'wetland-dead-skin',
+                    'wetland-pink-tentacle',
+                    'wetland-red-tentacle',
+                    'wetland-yumako',
+                    'wetland-jellynut',
+                    'oil-ocean-shallow',
+                    'oil-ocean-deep', -- all oil ocean
+                    'lava',
+                    'lava-hot', -- all lava
+                    -- not ammoniacal ocean
+                },
+            },
+        },
+        {
+            type = 'item',
+            name = 'ice-platform',
+            icon = '__space-age__/graphics/icons/ice-platform.png',
+            subgroup = 'terrain',
+            order = 'c[landfill]-f[ice-platform]',
+            inventory_move_sound = space_age_item_sounds.ice_inventory_move,
+            pick_sound = space_age_item_sounds.ice_inventory_pickup,
+            drop_sound = space_age_item_sounds.ice_inventory_move,
+            stack_size = 100,
+            weight = 10 * kg,
+            place_as_tile = {
+                result = 'ice-platform',
+                condition_size = 1,
+                condition = { layers = { ground_tile = true } },
+                tile_condition = {
+                    'ammoniacal-ocean',
+                    'ammoniacal-ocean-2',
+                    'brash-ice'
+                },
+            },
         },
     })
 end

@@ -3210,5 +3210,33 @@ return function()
                 quaternary = { r = 0.554, g = 0.540, b = 0.540, a = 1.000 },
             },
         },
+        {
+            type = 'recipe',
+            name = 'foundation',
+            energy_required = 30,
+            enabled = false,
+            category = 'crafting-with-fluid',
+            ingredients = {
+                { type = 'item', name = 'tungsten-plate', amount = 4 },
+                { type = 'item', name = 'lithium-plate', amount = 4 },
+                { type = 'item', name = 'carbon-fiber', amount = 4 },
+                { type = 'item', name = 'stone', amount = 20 },
+                { type = 'fluid', name = 'fluoroketone-cold', amount = 20 },
+            },
+            results = { { type = 'item', name = 'foundation', amount = 1 } },
+        },
+        {
+            type = 'recipe',
+            name = 'ice-platform',
+            always_show_made_in = true,
+            category = 'crafting-with-fluid',
+            energy_required = 30,
+            ingredients = {
+                { type = 'fluid', name = 'ammonia', amount = 400 },
+                { type = 'item', name = 'ice', amount = 50 },
+            },
+            results = { { type = 'item', name = 'ice-platform', amount = 1 } },
+            enabled = false,
+        },
     })
 end

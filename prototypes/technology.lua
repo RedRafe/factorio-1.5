@@ -1431,7 +1431,7 @@ return function()
             },
             prerequisites = { 'artillery', 'space-science-pack' },
             unit = {
-                count_formula = '2^L*1000',
+                count_formula = '2^(L-1)*1000',
                 ingredients = {
                     { 'automation-science-pack', 1 },
                     { 'logistic-science-pack', 1 },
@@ -1460,7 +1460,7 @@ return function()
             },
             prerequisites = { 'artillery', 'space-science-pack' },
             unit = {
-                count_formula = '1000+3^(L-1)*1000',
+                count_formula = '2^(L-1)*1000',
                 ingredients = {
                     { 'automation-science-pack', 1 },
                     { 'logistic-science-pack', 1 },
@@ -4799,7 +4799,7 @@ return function()
             },
             prerequisites = { 'mining-productivity-3', 'space-science-pack' },
             unit = {
-                count_formula = '2500*(L - 3)',
+                count_formula = '1000*(L - 3)',
                 ingredients = {
                     { 'automation-science-pack', 1 },
                     { 'logistic-science-pack', 1 },
@@ -5017,7 +5017,7 @@ return function()
             },
             prerequisites = { 'quality-module', 'processing-unit' },
             unit = {
-                count = 75,
+                count = 500,
                 ingredients = {
                     { 'automation-science-pack', 1 },
                     { 'logistic-science-pack', 1 },
@@ -5040,7 +5040,7 @@ return function()
             },
             prerequisites = { 'quality-module-2', 'production-science-pack' },
             unit = {
-                count = 300,
+                count = 2000,
                 ingredients = {
                     { 'automation-science-pack', 1 },
                     { 'logistic-science-pack', 1 },
@@ -5513,6 +5513,35 @@ return function()
                 time = 60,
             },
             order = 'all',
+        },
+        {
+            type = 'technology',
+            name = 'foundation',
+            icon = '__space-age__/graphics/technology/foundation.png',
+            icon_size = 256,
+            effects = {
+                {
+                    type = 'unlock-recipe',
+                    recipe = 'foundation',
+                },
+                {
+                    type = 'unlock-recipe',
+                    recipe = 'ice-platform',
+                },
+            },
+            prerequisites = { 'cryogenic-plant' },
+            unit = {
+                count_formula = '2000',
+                ingredients = {
+                    { 'automation-science-pack', 1 },
+                    { 'logistic-science-pack', 1 },
+                    { 'chemical-science-pack', 1 },
+                    { 'production-science-pack', 1 },
+                    { 'utility-science-pack', 1 },
+                    { 'space-science-pack', 1 },
+                },
+                time = 60,
+            },
         },
         {
             type = 'technology',
