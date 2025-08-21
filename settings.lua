@@ -20,4 +20,11 @@ data:extend({
         default_value = true,
         order = 'o-[quality-trains]'
     },
+    {
+        type = 'bool-setting',
+        name = 'f15-loaders',
+        setting_type = 'startup',
+        default_value = true,
+        order = 'o-[loaders]'
+    },
 })
