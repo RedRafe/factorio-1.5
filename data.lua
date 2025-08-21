@@ -38,6 +38,14 @@ for _, _type in pairs(data.raw) do
         if p.next_upgrade and not data.raw[p.type][p.next_upgrade] then
             p.next_upgrade = nil
         end
+
+        --- Remove spores
+        if p.energy_source and p.energy_source.emissions_per_minute then
+            if p.energy_source.emissions_per_minute.spores and not p.energy_source.emissions_per_minute.pollution then
+                p.energy_source.emissions_per_minute.pollution = p.energy_source.emissions_per_minute.spores
+            end
+            p.energy_source.emissions_per_minute.spores = nil
+        end
     end
 end
 
@@ -107,7 +115,10 @@ for _, lab in pairs(data.raw.lab) do
     end
 end
 
+require 'prototypes/resource'()
 require 'prototypes/item'()
 require 'prototypes/recipe'()
 require 'prototypes/fluid'()
+require 'prototypes/entity'()
 require 'prototypes/technology'()
+require 'prototypes/tiles'()

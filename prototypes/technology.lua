@@ -1,20 +1,26 @@
 --- source: factorio/data/base/prototypes/technology.lua
 
 return function()
-    local physical_projectile_damage_1_icon = '__base__/graphics/technology/physical-projectile-damage-1.png'
-    local physical_projectile_damage_2_icon = '__base__/graphics/technology/physical-projectile-damage-2.png'
-    local stronger_explosives_1_icon = '__base__/graphics/technology/stronger-explosives-1.png'
-    local stronger_explosives_2_icon = '__base__/graphics/technology/stronger-explosives-2.png'
-    local stronger_explosives_3_icon = '__base__/graphics/technology/stronger-explosives-3.png'
-    local refined_flammables_icon = '__base__/graphics/technology/refined-flammables.png'
+    local electric_weapons_damage_1_icon = '__space-age__/graphics/technology/electric-weapons-damage.png'
+    local electric_weapons_damage_2_icon = '__space-age__/graphics/technology/electric-weapons-damage.png'
+    local electric_weapons_damage_3_icon = '__space-age__/graphics/technology/electric-weapons-damage.png'
+    local laser_shooting_speed_icon = '__base__/graphics/technology/laser-shooting-speed.png'
     local laser_weapons_damage_1_icon = '__base__/graphics/technology/laser-weapons-damage.png'
     local laser_weapons_damage_2_icon = '__base__/graphics/technology/laser-weapons-damage.png'
     local laser_weapons_damage_3_icon = '__base__/graphics/technology/laser-weapons-damage.png'
+    local physical_projectile_damage_1_icon = '__base__/graphics/technology/physical-projectile-damage-1.png'
+    local physical_projectile_damage_2_icon = '__base__/graphics/technology/physical-projectile-damage-2.png'
+    local refined_flammables_icon = '__base__/graphics/technology/refined-flammables.png'
+    local stronger_explosives_1_icon = '__base__/graphics/technology/stronger-explosives-1.png'
+    local stronger_explosives_2_icon = '__base__/graphics/technology/stronger-explosives-2.png'
+    local stronger_explosives_3_icon = '__base__/graphics/technology/stronger-explosives-3.png'
     local weapon_shooting_speed_1_icon = '__base__/graphics/technology/weapon-shooting-speed-1.png'
     local weapon_shooting_speed_2_icon = '__base__/graphics/technology/weapon-shooting-speed-2.png'
     local weapon_shooting_speed_3_icon = '__base__/graphics/technology/weapon-shooting-speed-3.png'
-    local laser_shooting_speed_icon = '__base__/graphics/technology/laser-shooting-speed.png'
 
+    local recipe_productivity_limit = 30
+
+    -- ==================================================================== Base
     data:extend({
         {
             type = 'technology',
@@ -477,7 +483,9 @@ return function()
                 time = 60,
             },
             max_level = 'infinite',
+            ignore_tech_cost_multiplier = true,
             upgrade = true,
+            order = 'military',
         },
         {
             type = 'technology',
@@ -681,7 +689,9 @@ return function()
                 time = 60,
             },
             max_level = 'infinite',
+            ignore_tech_cost_multiplier = true,
             upgrade = true,
+            order = 'military',
         },
         {
             type = 'technology',
@@ -888,7 +898,9 @@ return function()
                 time = 60,
             },
             max_level = 'infinite',
+            ignore_tech_cost_multiplier = true,
             upgrade = true,
+            order = 'military',
         },
         {
             type = 'technology',
@@ -1086,7 +1098,9 @@ return function()
                 time = 60,
             },
             max_level = 'infinite',
+            ignore_tech_cost_multiplier = true,
             upgrade = true,
+            order = 'military',
         },
         {
             type = 'technology',
@@ -1403,6 +1417,7 @@ return function()
                 time = 60,
             },
             upgrade = true,
+            order = 'utility',
         },
         {
             type = 'technology',
@@ -1428,6 +1443,8 @@ return function()
                 time = 60,
             },
             max_level = 'infinite',
+            ignore_tech_cost_multiplier = true,
+            order = 'military',
         },
         {
             type = 'technology',
@@ -1455,6 +1472,8 @@ return function()
                 time = 60,
             },
             max_level = 'infinite',
+            ignore_tech_cost_multiplier = true,
+            order = 'military',
         },
     })
 
@@ -1544,7 +1563,9 @@ return function()
                 count_formula = '1000*(L-4)',
             },
             max_level = 'infinite',
+            ignore_tech_cost_multiplier = true,
             upgrade = true,
+            order = 'military',
         },
         {
             type = 'technology',
@@ -1736,6 +1757,7 @@ return function()
                 time = 30,
             },
             upgrade = true,
+            order = 'all',
         },
         {
             type = 'technology',
@@ -2936,6 +2958,7 @@ return function()
                 time = 60,
             },
             upgrade = true,
+            order = 'productivity',
         },
         {
             type = 'technology',
@@ -3750,7 +3773,7 @@ return function()
             },
             prerequisites = { 'worker-robots-speed-5', 'space-science-pack' },
             unit = {
-                count_formula = '2^(L-6)*1000',
+                count = 1000,
                 ingredients = {
                     { 'automation-science-pack', 1 },
                     { 'logistic-science-pack', 1 },
@@ -3761,8 +3784,8 @@ return function()
                 },
                 time = 60,
             },
-            max_level = 'infinite',
             upgrade = true,
+            order = 'all',
         },
         {
             type = 'technology',
@@ -4156,9 +4179,10 @@ return function()
                     recipe = 'solid-fuel-from-petroleum-gas',
                 },
             },
-            research_trigger = {
-                type = 'mine-entity',
-                entity = 'crude-oil',
+            unit = {
+                count = 100,
+                ingredients = { { 'automation-science-pack', 1 }, { 'logistic-science-pack', 1 } },
+                time = 30,
             },
         },
         {
@@ -4595,9 +4619,14 @@ return function()
                 },
             },
             prerequisites = { 'uranium-mining' },
-            research_trigger = {
-                type = 'mine-entity',
-                entity = 'uranium-ore',
+            unit = {
+                ingredients = {
+                    { 'automation-science-pack', 1 },
+                    { 'logistic-science-pack', 1 },
+                    { 'chemical-science-pack', 1 },
+                },
+                time = 30,
+                count = 200,
             },
         },
         {
@@ -4708,6 +4737,7 @@ return function()
                 time = 60,
             },
             upgrade = true,
+            order = 'productivity',
         },
         {
             type = 'technology',
@@ -4730,6 +4760,7 @@ return function()
                 time = 60,
             },
             upgrade = true,
+            order = 'productivity',
         },
         {
             type = 'technology',
@@ -4754,6 +4785,7 @@ return function()
                 time = 60,
             },
             upgrade = true,
+            order = 'productivity',
         },
         {
             type = 'technology',
@@ -4779,7 +4811,9 @@ return function()
                 time = 60,
             },
             max_level = 'infinite',
+            ignore_tech_cost_multiplier = true,
             upgrade = true,
+            order = 'productivity',
         },
         {
             type = 'technology',
@@ -5067,6 +5101,7 @@ return function()
                 },
                 time = 60,
             },
+            order = 'all',
         },
         {
             type = 'technology',
@@ -5090,6 +5125,1499 @@ return function()
                 },
                 time = 15,
             },
+        },
+    })
+
+    -- ==================================================================== Space Age
+    data:extend({
+        {
+            type = 'technology',
+            name = 'agriculture',
+            icon = '__space-age__/graphics/technology/agriculture.png',
+            icon_size = 256,
+            effects = {
+                {
+                    type = 'unlock-recipe',
+                    recipe = 'agricultural-tower',
+                },
+            },
+            prerequisites = { 'chemical-science-pack' },
+            unit = {
+                count = 100,
+                ingredients = {
+                    { 'automation-science-pack', 1 },
+                    { 'logistic-science-pack', 1 },
+                    { 'chemical-science-pack', 1 },
+                },
+                time = 60,
+            },
+        },
+        {
+            type = 'technology',
+            name = 'battery-mk3-equipment',
+            icons = util.technology_icon_constant_equipment('__space-age__/graphics/technology/battery-mk3-equipment.png'),
+            prerequisites = { 'battery-mk2-equipment' },
+            effects = {
+                {
+                    type = 'unlock-recipe',
+                    recipe = 'battery-mk3-equipment',
+                },
+            },
+            unit = {
+                count = 500,
+                ingredients = {
+                    { 'automation-science-pack', 1 },
+                    { 'logistic-science-pack', 1 },
+                    { 'chemical-science-pack', 1 },
+                    { 'utility-science-pack', 1 },
+                    { 'space-science-pack', 1 },
+                },
+                time = 60,
+            },
+        },
+        {
+            type = 'technology',
+            name = 'big-mining-drill',
+            icon = '__space-age__/graphics/technology/big-mining-drill.png',
+            icon_size = 256,
+            effects = {
+                {
+                    type = 'unlock-recipe',
+                    recipe = 'big-mining-drill',
+                },
+            },
+            prerequisites = { 'foundry', 'electric-mining-drill' },
+            unit = {
+                count = 2000,
+                ingredients = {
+                    { 'automation-science-pack', 1 },
+                    { 'logistic-science-pack', 1 },
+                    { 'chemical-science-pack', 1 },
+                    { 'production-science-pack', 1 },
+                },
+                time = 60,
+            },
+        },
+        {
+            type = 'technology',
+            name = 'biochamber',
+            icon = '__space-age__/graphics/technology/biochamber.png',
+            icon_size = 256,
+            effects = {
+                {
+                    type = 'unlock-recipe',
+                    recipe = 'biochamber',
+                },
+                {
+                    type = 'unlock-recipe',
+                    recipe = 'ice-melting',
+                },
+            },
+            prerequisites = { 'tungsten-steel' },
+            unit = {
+                count = 2000,
+                ingredients = {
+                    { 'automation-science-pack', 1 },
+                    { 'logistic-science-pack', 1 },
+                    { 'chemical-science-pack', 1 },
+                    { 'production-science-pack', 1 },
+                    { 'space-science-pack', 1 },
+                },
+                time = 60,
+            },
+        },
+        {
+            type = 'technology',
+            name = 'biolab',
+            icon = '__space-age__/graphics/technology/biolab.png',
+            icon_size = 256,
+            effects = {
+                {
+                    type = 'unlock-recipe',
+                    recipe = 'biolab',
+                },
+            },
+            prerequisites = { 'space-science-pack' },
+            unit = {
+                count = 2000,
+                ingredients = {
+                    { 'automation-science-pack', 1 },
+                    { 'logistic-science-pack', 1 },
+                    { 'chemical-science-pack', 1 },
+                    { 'military-science-pack', 1 },
+                    { 'production-science-pack', 1 },
+                    { 'utility-science-pack', 1 },
+                    { 'space-science-pack', 1 },
+                },
+                time = 60,
+            },
+            order = 'all',
+        },
+        {
+            type = 'technology',
+            name = 'calcite-processing',
+            icon = '__space-age__/graphics/technology/calcite-processing.png',
+            icon_size = 256,
+            effects = {
+                {
+                    type = 'unlock-recipe',
+                    recipe = 'acid-neutralisation',
+                },
+                {
+                    type = 'unlock-recipe',
+                    recipe = 'steam-condensation',
+                },
+                {
+                    type = 'unlock-recipe',
+                    recipe = 'simple-coal-liquefaction',
+                },
+            },
+            prerequisites = { 'production-science-pack' },
+            unit = {
+                count = 500,
+                ingredients = {
+                    { 'automation-science-pack', 1 },
+                    { 'logistic-science-pack', 1 },
+                    { 'chemical-science-pack', 1 },
+                    { 'production-science-pack', 1 },
+                },
+                time = 60,
+            },
+        },
+        {
+            type = 'technology',
+            name = 'carbon-fiber',
+            icon = '__space-age__/graphics/technology/carbon-fiber.png',
+            icon_size = 256,
+            effects = {
+                {
+                    type = 'unlock-recipe',
+                    recipe = 'carbon-fiber',
+                },
+            },
+            prerequisites = { 'tungsten-carbide' },
+            unit = {
+                count = 500,
+                ingredients = {
+                    { 'automation-science-pack', 1 },
+                    { 'logistic-science-pack', 1 },
+                    { 'chemical-science-pack', 1 },
+                    { 'production-science-pack', 1 },
+                },
+                time = 60,
+            },
+        },
+        {
+            type = 'technology',
+            name = 'cryogenic-plant',
+            icon = '__space-age__/graphics/technology/cryogenic-plant.png',
+            icon_size = 256,
+            effects = {
+                {
+                    type = 'unlock-recipe',
+                    recipe = 'cryogenic-plant',
+                },
+                {
+                    type = 'unlock-recipe',
+                    recipe = 'fluoroketone',
+                },
+                {
+                    type = 'unlock-recipe',
+                    recipe = 'fluoroketone-cooling',
+                },
+                {
+                    type = 'unlock-recipe',
+                    recipe = 'solid-fuel-from-ammonia',
+                },
+                {
+                    type = 'unlock-recipe',
+                    recipe = 'ammonia-rocket-fuel',
+                },
+            },
+            prerequisites = { 'lithium-processing' },
+            unit = {
+                count = 2000,
+                ingredients = {
+                    { 'automation-science-pack', 1 },
+                    { 'logistic-science-pack', 1 },
+                    { 'chemical-science-pack', 1 },
+                    { 'production-science-pack', 1 },
+                    { 'utility-science-pack', 1 },
+                    { 'space-science-pack', 1 },
+                },
+                time = 60,
+            },
+        },
+        {
+            type = 'technology',
+            name = 'electric-weapons-damage-1',
+            icons = util.technology_icon_constant_damage(electric_weapons_damage_1_icon),
+            effects = {
+                {
+                    type = 'ammo-damage',
+                    ammo_category = 'beam',
+                    modifier = 0.3,
+                },
+            },
+            prerequisites = { 'destroyer' },
+            unit = {
+                count = 250,
+                ingredients = {
+                    { 'automation-science-pack', 1 },
+                    { 'logistic-science-pack', 1 },
+                    { 'military-science-pack', 1 },
+                    { 'chemical-science-pack', 1 },
+                    { 'utility-science-pack', 1 },
+                },
+                time = 30,
+            },
+            --upgrade = true,
+            order = 'b-a-a',
+        },
+        {
+            type = 'technology',
+            name = 'electric-weapons-damage-2',
+            icons = util.technology_icon_constant_damage(electric_weapons_damage_2_icon),
+            effects = {
+                {
+                    type = 'ammo-damage',
+                    ammo_category = 'beam',
+                    modifier = 0.4,
+                },
+            },
+            prerequisites = { 'electric-weapons-damage-1', 'space-science-pack' },
+            unit = {
+                count = 500,
+                ingredients = {
+                    { 'automation-science-pack', 1 },
+                    { 'logistic-science-pack', 1 },
+                    { 'chemical-science-pack', 1 },
+                    { 'military-science-pack', 1 },
+                    { 'utility-science-pack', 1 },
+                    { 'space-science-pack', 1 },
+                },
+                time = 60,
+            },
+            --upgrade = true,
+            order = 'b-a-a',
+        },
+        {
+            type = 'technology',
+            name = 'electric-weapons-damage-3',
+            icons = util.technology_icon_constant_damage(electric_weapons_damage_3_icon),
+            effects = {
+                {
+                    type = 'ammo-damage',
+                    ammo_category = 'tesla',
+                    modifier = 0.7,
+                },
+                {
+                    type = 'ammo-damage',
+                    ammo_category = 'electric',
+                    modifier = 0.7,
+                },
+                {
+                    type = 'ammo-damage',
+                    ammo_category = 'beam',
+                    modifier = 0.6,
+                },
+            },
+            prerequisites = { 'electric-weapons-damage-2', 'tesla-weapons' },
+            unit = {
+                count = 1000,
+                ingredients = {
+                    { 'automation-science-pack', 1 },
+                    { 'logistic-science-pack', 1 },
+                    { 'chemical-science-pack', 1 },
+                    { 'military-science-pack', 1 },
+                    { 'utility-science-pack', 1 },
+                    { 'space-science-pack', 1 },
+                },
+                time = 60,
+            },
+            --upgrade = true,
+            order = 'a',
+        },
+        {
+            type = 'technology',
+            name = 'electric-weapons-damage-4',
+            icons = util.technology_icon_constant_damage(electric_weapons_damage_3_icon),
+            effects = {
+                {
+                    type = 'ammo-damage',
+                    ammo_category = 'tesla',
+                    modifier = 0.7,
+                },
+                {
+                    type = 'ammo-damage',
+                    ammo_category = 'electric',
+                    modifier = 0.7,
+                },
+                {
+                    type = 'ammo-damage',
+                    ammo_category = 'beam',
+                    modifier = 0.3,
+                },
+            },
+            prerequisites = { 'electric-weapons-damage-3' },
+            unit = {
+                count_formula = '2^(L-3)*1000',
+                ingredients = {
+                    { 'automation-science-pack', 1 },
+                    { 'logistic-science-pack', 1 },
+                    { 'chemical-science-pack', 1 },
+                    { 'military-science-pack', 1 },
+                    { 'utility-science-pack', 1 },
+                    { 'space-science-pack', 1 },
+                },
+                time = 60,
+            },
+            max_level = 'infinite',
+            ignore_tech_cost_multiplier = true,
+            upgrade = true,
+        },
+        {
+            type = 'technology',
+            name = 'electromagnetic-plant',
+            icon = '__space-age__/graphics/technology/electromagnetic-plant.png',
+            icon_size = 256,
+            effects = {
+                {
+                    type = 'unlock-recipe',
+                    recipe = 'electromagnetic-plant',
+                },
+                {
+                    type = 'unlock-recipe',
+                    recipe = 'superconductor',
+                },
+                {
+                    type = 'unlock-recipe',
+                    recipe = 'supercapacitor',
+                },
+                {
+                    type = 'unlock-recipe',
+                    recipe = 'electrolyte',
+                },
+            },
+            prerequisites = { 'holmium-processing' },
+            unit = {
+                count = 2000,
+                ingredients = {
+                    { 'automation-science-pack', 1 },
+                    { 'logistic-science-pack', 1 },
+                    { 'chemical-science-pack', 1 },
+                    { 'production-science-pack', 1 },
+                    { 'utility-science-pack', 1 },
+                    { 'space-science-pack', 1 },
+                },
+                time = 60,
+            },
+            order = 'all',
+        },
+        {
+            type = 'technology',
+            name = 'foundry',
+            icon = '__space-age__/graphics/technology/foundry.png',
+            icon_size = 256,
+            effects = {
+                {
+                    type = 'unlock-recipe',
+                    recipe = 'foundry',
+                },
+                {
+                    type = 'unlock-recipe',
+                    recipe = 'molten-iron-from-lava',
+                },
+                {
+                    type = 'unlock-recipe',
+                    recipe = 'molten-copper-from-lava',
+                },
+                {
+                    type = 'unlock-recipe',
+                    recipe = 'concrete-from-molten-iron',
+                },
+                {
+                    type = 'unlock-recipe',
+                    recipe = 'casting-low-density-structure',
+                },
+                {
+                    type = 'unlock-recipe',
+                    recipe = 'molten-iron',
+                },
+                {
+                    type = 'unlock-recipe',
+                    recipe = 'molten-copper',
+                },
+                {
+                    type = 'unlock-recipe',
+                    recipe = 'casting-iron',
+                },
+                {
+                    type = 'unlock-recipe',
+                    recipe = 'casting-steel',
+                },
+                {
+                    type = 'unlock-recipe',
+                    recipe = 'casting-copper',
+                },
+                {
+                    type = 'unlock-recipe',
+                    recipe = 'casting-iron-gear-wheel',
+                },
+                {
+                    type = 'unlock-recipe',
+                    recipe = 'casting-iron-stick',
+                },
+                {
+                    type = 'unlock-recipe',
+                    recipe = 'casting-pipe',
+                },
+                {
+                    type = 'unlock-recipe',
+                    recipe = 'casting-pipe-to-ground',
+                },
+                {
+                    type = 'unlock-recipe',
+                    recipe = 'casting-copper-cable',
+                },
+            },
+            prerequisites = { 'calcite-processing', 'tungsten-carbide' },
+            unit = {
+                count = 500,
+                ingredients = {
+                    { 'automation-science-pack', 1 },
+                    { 'logistic-science-pack', 1 },
+                    { 'chemical-science-pack', 1 },
+                    { 'production-science-pack', 1 },
+                },
+                time = 60,
+            },
+        },
+        {
+            type = 'technology',
+            name = 'fusion-reactor-equipment',
+            icons = util.technology_icon_constant_equipment('__space-age__/graphics/technology/fusion-reactor-equipment.png'),
+            icon_size = 256,
+            effects = {
+                {
+                    type = 'unlock-recipe',
+                    recipe = 'fusion-reactor-equipment',
+                },
+            },
+            prerequisites = { 'fusion-reactor', 'fission-reactor-equipment' },
+            unit = {
+                count = 1000,
+                ingredients = {
+                    { 'automation-science-pack', 1 },
+                    { 'logistic-science-pack', 1 },
+                    { 'military-science-pack', 1 },
+                    { 'chemical-science-pack', 1 },
+                    { 'production-science-pack', 1 },
+                    { 'utility-science-pack', 1 },
+                    { 'space-science-pack', 1 },
+                },
+                time = 60,
+            },
+            order = 'd',
+        },
+        {
+            type = 'technology',
+            name = 'fusion-reactor',
+            icon = '__space-age__/graphics/technology/fusion-reactor.png',
+            icon_size = 256,
+            effects = {
+                {
+                    type = 'unlock-recipe',
+                    recipe = 'fusion-reactor',
+                },
+                {
+                    type = 'unlock-recipe',
+                    recipe = 'fusion-generator',
+                },
+                {
+                    type = 'unlock-recipe',
+                    recipe = 'fusion-power-cell',
+                },
+            },
+            prerequisites = { 'quantum-processor' },
+            unit = {
+                count = 2000,
+                ingredients = {
+                    { 'automation-science-pack', 1 },
+                    { 'logistic-science-pack', 1 },
+                    { 'chemical-science-pack', 1 },
+                    { 'production-science-pack', 1 },
+                    { 'utility-science-pack', 1 },
+                    { 'space-science-pack', 1 },
+                },
+                time = 60,
+            },
+            order = 'd',
+        },
+        {
+            type = 'technology',
+            name = 'health',
+            icon = '__space-age__/graphics/technology/health.png',
+            icon_size = 256,
+            effects = {
+                { type = 'character-health-bonus', modifier = 50 },
+            },
+            prerequisites = { 'space-science-pack', 'utility-science-pack', 'military-science-pack' },
+            unit = {
+                count_formula = '2^L*50',
+                ingredients = {
+                    { 'military-science-pack', 1 },
+                    { 'utility-science-pack', 1 },
+                    { 'space-science-pack', 1 },
+                },
+                time = 60,
+            },
+            max_level = 'infinite',
+            ignore_tech_cost_multiplier = true,
+            order = 'health',
+        },
+        {
+            type = 'technology',
+            name = 'heating-tower',
+            icon = '__space-age__/graphics/technology/heating-tower.png',
+            icon_size = 256,
+            effects = {
+                {
+                    type = 'unlock-recipe',
+                    recipe = 'heating-tower',
+                },
+                {
+                    type = 'unlock-recipe',
+                    recipe = 'heat-pipe',
+                },
+                {
+                    type = 'unlock-recipe',
+                    recipe = 'heat-exchanger',
+                },
+                {
+                    type = 'unlock-recipe',
+                    recipe = 'steam-turbine',
+                },
+            },
+            prerequisites = { 'utility-science-pack' },
+            unit = {
+                count = 2000,
+                ingredients = {
+                    { 'automation-science-pack', 1 },
+                    { 'logistic-science-pack', 1 },
+                    { 'chemical-science-pack', 1 },
+                    { 'utility-science-pack', 1 },
+                },
+                time = 60,
+            },
+        },
+        {
+            type = 'technology',
+            name = 'holmium-processing',
+            icon = '__space-age__/graphics/technology/holmium-processing.png',
+            icon_size = 256,
+            effects = {
+                {
+                    type = 'unlock-recipe',
+                    recipe = 'holmium-solution',
+                },
+                {
+                    type = 'unlock-recipe',
+                    recipe = 'holmium-plate',
+                },
+            },
+            prerequisites = { 'recycling', 'space-science-pack' },
+            unit = {
+                count = 500,
+                ingredients = {
+                    { 'automation-science-pack', 1 },
+                    { 'logistic-science-pack', 1 },
+                    { 'chemical-science-pack', 1 },
+                    { 'production-science-pack', 1 },
+                    { 'utility-science-pack', 1 },
+                    { 'space-science-pack', 1 },
+                },
+                time = 60,
+            },
+            order = 'all',
+        },
+        {
+            type = 'technology',
+            name = 'lithium-processing',
+            icon = '__space-age__/graphics/technology/lithium-processing.png',
+            icon_size = 256,
+            effects = {
+                {
+                    type = 'unlock-recipe',
+                    recipe = 'lithium',
+                },
+                {
+                    type = 'unlock-recipe',
+                    recipe = 'lithium-plate',
+                },
+            },
+            prerequisites = { 'holmium-processing' },
+            unit = {
+                count = 500,
+                ingredients = {
+                    { 'automation-science-pack', 1 },
+                    { 'logistic-science-pack', 1 },
+                    { 'chemical-science-pack', 1 },
+                    { 'production-science-pack', 1 },
+                    { 'utility-science-pack', 1 },
+                    { 'space-science-pack', 1 },
+                },
+                time = 60,
+            },
+        },
+        {
+            type = 'technology',
+            name = 'mech-armor',
+            icon = '__space-age__/graphics/technology/mech-armor.png',
+            icon_size = 256,
+            effects = {
+                {
+                    type = 'unlock-recipe',
+                    recipe = 'mech-armor',
+                },
+            },
+            prerequisites = { 'military-5', 'power-armor-mk2' },
+            unit = {
+                count = 5000,
+                ingredients = {
+                    { 'automation-science-pack', 1 },
+                    { 'logistic-science-pack', 1 },
+                    { 'chemical-science-pack', 1 },
+                    { 'military-science-pack', 1 },
+                    { 'utility-science-pack', 1 },
+                    { 'space-science-pack', 1 },
+                },
+                time = 60,
+            },
+            order = 'b',
+        },
+        {
+            type = 'technology',
+            name = 'military-5',
+            icon = '__base__/graphics/technology/military.png',
+            icon_size = 256,
+            effects = {
+                {
+                    type = 'unlock-recipe',
+                    recipe = 'teslagun',
+                },
+                {
+                    type = 'unlock-recipe',
+                    recipe = 'tesla-ammo',
+                },
+                {
+                    type = 'unlock-recipe',
+                    recipe = 'railgun',
+                },
+                {
+                    type = 'unlock-recipe',
+                    recipe = 'railgun-ammo',
+                },
+            },
+            prerequisites = { 'military-4', 'space-science-pack' },
+            unit = {
+                count = 500,
+                ingredients = {
+                    { 'automation-science-pack', 1 },
+                    { 'logistic-science-pack', 1 },
+                    { 'chemical-science-pack', 1 },
+                    { 'military-science-pack', 1 },
+                    { 'utility-science-pack', 1 },
+                    { 'space-science-pack', 1 },
+                },
+                time = 60,
+            },
+            order = 'b-b-a',
+        },
+        {
+            type = 'technology',
+            name = 'quantum-processor',
+            icon = '__space-age__/graphics/technology/quantum-processor.png',
+            icon_size = 256,
+            effects = {
+                {
+                    type = 'unlock-recipe',
+                    recipe = 'quantum-processor',
+                },
+            },
+            prerequisites = { 'space-science-pack' },
+            unit = {
+                count = 500,
+                ingredients = {
+                    { 'automation-science-pack', 1 },
+                    { 'logistic-science-pack', 1 },
+                    { 'chemical-science-pack', 1 },
+                    { 'production-science-pack', 1 },
+                    { 'utility-science-pack', 1 },
+                    { 'space-science-pack', 1 },
+                },
+                time = 60,
+            },
+            order = 'b-c-a',
+        },
+        {
+            type = 'technology',
+            name = 'railgun',
+            icon = '__space-age__/graphics/technology/railgun.png',
+            icon_size = 256,
+            effects = {
+                {
+                    type = 'unlock-recipe',
+                    recipe = 'railgun-turret',
+                },
+            },
+            prerequisites = { 'quantum-processor', 'military-5' },
+            unit = {
+                count = 2000,
+                ingredients = {
+                    { 'automation-science-pack', 1 },
+                    { 'logistic-science-pack', 1 },
+                    { 'chemical-science-pack', 1 },
+                    { 'military-science-pack', 1 },
+                    { 'utility-science-pack', 1 },
+                    { 'space-science-pack', 1 },
+                },
+                time = 60,
+            },
+            order = 'c',
+        },
+        {
+            type = 'technology',
+            name = 'rocket-turret',
+            icon = '__space-age__/graphics/technology/rocket-turret.png',
+            icon_size = 256,
+            effects = {
+                {
+                    type = 'unlock-recipe',
+                    recipe = 'rocket-turret',
+                },
+                {
+                    type = 'unlock-recipe',
+                    recipe = 'coal-synthesis',
+                },
+            },
+            prerequisites = { 'rocketry', 'carbon-fiber', 'stronger-explosives-2' },
+            unit = {
+                count = 1000,
+                ingredients = {
+                    { 'automation-science-pack', 1 },
+                    { 'logistic-science-pack', 1 },
+                    { 'military-science-pack', 1 },
+                    { 'chemical-science-pack', 1 },
+                    { 'utility-science-pack', 1 },
+                    { 'space-science-pack', 1 },
+                },
+                time = 30,
+            },
+        },
+        {
+            type = 'technology',
+            name = 'stack-inserter',
+            icon = '__space-age__/graphics/technology/stack-inserter.png',
+            icon_size = 256,
+            effects = {
+                {
+                    type = 'unlock-recipe',
+                    recipe = 'stack-inserter',
+                },
+                {
+                    type = 'belt-stack-size-bonus',
+                    modifier = 1,
+                },
+            },
+            prerequisites = { 'carbon-fiber', 'production-science-pack', 'utility-science-pack', 'bulk-inserter' },
+            unit = {
+                count = 1000,
+                ingredients = {
+                    { 'automation-science-pack', 1 },
+                    { 'logistic-science-pack', 1 },
+                    { 'chemical-science-pack', 1 },
+                    { 'production-science-pack', 1 },
+                    { 'utility-science-pack', 1 },
+                    { 'space-science-pack', 1 },
+                },
+                time = 60,
+            },
+        },
+        {
+            type = 'technology',
+            name = 'tesla-weapons',
+            icon = '__space-age__/graphics/technology/tesla-weapons.png',
+            icon_size = 256,
+            effects = {
+                {
+                    type = 'unlock-recipe',
+                    recipe = 'tesla-turret',
+                },
+            },
+            prerequisites = { 'military-5' },
+            unit = {
+                count = 1500,
+                ingredients = {
+                    { 'automation-science-pack', 1 },
+                    { 'logistic-science-pack', 1 },
+                    { 'chemical-science-pack', 1 },
+                    { 'military-science-pack', 1 },
+                    { 'utility-science-pack', 1 },
+                    { 'space-science-pack', 1 },
+                },
+                time = 60,
+            },
+            order = 'a',
+        },
+        {
+            type = 'technology',
+            name = 'toolbelt-equipment',
+            icons = util.technology_icon_constant_equipment('__space-age__/graphics/technology/toolbelt-equipment.png'),
+            prerequisites = { 'power-armor', 'toolbelt', 'carbon-fiber', 'utility-science-pack' },
+            effects = {
+                {
+                    type = 'unlock-recipe',
+                    recipe = 'toolbelt-equipment',
+                },
+            },
+            unit = {
+                count = 300,
+                ingredients = {
+                    { 'automation-science-pack', 1 },
+                    { 'logistic-science-pack', 1 },
+                    { 'chemical-science-pack', 1 },
+                    { 'utility-science-pack', 1 },
+                },
+                time = 30,
+            },
+        },
+        {
+            type = 'technology',
+            name = 'transport-belt-capacity-1',
+            localised_description = { 'technology-description.belt-capacity' },
+            icons = util.technology_icon_constant_stack_size('__space-age__/graphics/technology/transport-belt-capacity.png'),
+            effects = {
+                {
+                    type = 'belt-stack-size-bonus',
+                    modifier = 1,
+                },
+            },
+            prerequisites = { 'stack-inserter' },
+            unit = {
+                count = 2000,
+                ingredients = {
+                    { 'automation-science-pack', 1 },
+                    { 'logistic-science-pack', 1 },
+                    { 'chemical-science-pack', 1 },
+                    { 'production-science-pack', 1 },
+                    { 'utility-science-pack', 1 },
+                    { 'space-science-pack', 1 },
+                },
+                time = 60,
+            },
+            upgrade = true,
+        },
+        {
+            type = 'technology',
+            name = 'transport-belt-capacity-2',
+            localised_description = { 'technology-description.belt-capacity' },
+            icons = util.technology_icon_constant_stack_size('__space-age__/graphics/technology/transport-belt-capacity.png'),
+            effects = {
+                {
+                    type = 'belt-stack-size-bonus',
+                    modifier = 1,
+                },
+                {
+                    type = 'inserter-stack-size-bonus',
+                    modifier = 1,
+                },
+            },
+            prerequisites = { 'transport-belt-capacity-1' },
+            unit = {
+                count = 3000,
+                ingredients = {
+                    { 'automation-science-pack', 1 },
+                    { 'logistic-science-pack', 1 },
+                    { 'chemical-science-pack', 1 },
+                    { 'production-science-pack', 1 },
+                    { 'utility-science-pack', 1 },
+                    { 'space-science-pack', 1 },
+                },
+                time = 60,
+            },
+            upgrade = true,
+        },
+        {
+            type = 'technology',
+            name = 'tree-seeding',
+            icon = '__space-age__/graphics/technology/tree-seeding.png',
+            icon_size = 256,
+            effects = {
+                {
+                    type = 'unlock-recipe',
+                    recipe = 'wood-processing',
+                },
+            },
+            prerequisites = { 'agriculture' },
+            unit = {
+                count = 300,
+                ingredients = {
+                    { 'automation-science-pack', 1 },
+                    { 'logistic-science-pack', 1 },
+                    { 'chemical-science-pack', 1 },
+                },
+                time = 60,
+            },
+        },
+        {
+            type = 'technology',
+            name = 'tungsten-carbide',
+            icon = '__space-age__/graphics/technology/tungsten-carbide.png',
+            icon_size = 256,
+            effects = {
+                {
+                    type = 'unlock-recipe',
+                    recipe = 'carbon',
+                },
+                {
+                    type = 'unlock-recipe',
+                    recipe = 'tungsten-carbide',
+                },
+            },
+            prerequisites = { 'production-science-pack' },
+            unit = {
+                count = 500,
+                ingredients = {
+                    { 'automation-science-pack', 1 },
+                    { 'logistic-science-pack', 1 },
+                    { 'chemical-science-pack', 1 },
+                    { 'production-science-pack', 1 },
+                },
+                time = 60,
+            },
+        },
+        {
+            type = 'technology',
+            name = 'tungsten-steel',
+            icon = '__space-age__/graphics/technology/tungsten-steel.png',
+            icon_size = 256,
+            effects = {
+                {
+                    type = 'unlock-recipe',
+                    recipe = 'tungsten-plate',
+                },
+            },
+            prerequisites = { 'big-mining-drill', 'space-science-pack' },
+            unit = {
+                count = 500,
+                ingredients = {
+                    { 'automation-science-pack', 1 },
+                    { 'logistic-science-pack', 1 },
+                    { 'chemical-science-pack', 1 },
+                    { 'production-science-pack', 1 },
+                    { 'space-science-pack', 1 },
+                },
+                time = 60,
+            },
+            order = 'base',
+        },
+        {
+            type = 'technology',
+            name = 'turbo-transport-belt',
+            icon = '__space-age__/graphics/technology/turbo-transport-belt.png',
+            icon_size = 256,
+            effects = {
+                {
+                    type = 'unlock-recipe',
+                    recipe = 'turbo-transport-belt',
+                },
+                {
+                    type = 'unlock-recipe',
+                    recipe = 'turbo-underground-belt',
+                },
+                {
+                    type = 'unlock-recipe',
+                    recipe = 'turbo-splitter',
+                },
+            },
+            prerequisites = { 'tungsten-steel', 'logistics-3' },
+            unit = {
+                count = 500,
+                ingredients = {
+                    { 'automation-science-pack', 1 },
+                    { 'logistic-science-pack', 1 },
+                    { 'chemical-science-pack', 1 },
+                    { 'production-science-pack', 1 },
+                    { 'space-science-pack', 1 },
+                },
+                time = 60,
+            },
+        },
+    })
+
+    -- Infinite research
+    data:extend({
+        {
+            type = 'technology',
+            name = 'worker-robots-storage-4',
+            icons = util.technology_icon_constant_capacity('__base__/graphics/technology/worker-robots-storage.png'),
+            effects = {
+                {
+                    type = 'worker-robot-storage',
+                    modifier = 1,
+                },
+            },
+            prerequisites = { 'worker-robots-storage-3', 'space-science-pack' },
+            unit = {
+                count_formula = '1.8^(L-4)*800',
+                ingredients = {
+                    { 'automation-science-pack', 1 },
+                    { 'logistic-science-pack', 1 },
+                    { 'chemical-science-pack', 1 },
+                    { 'production-science-pack', 1 },
+                    { 'utility-science-pack', 1 },
+                    { 'space-science-pack', 1 },
+                },
+                time = 60,
+            },
+            max_level = 49,
+            upgrade = true,
+            ignore_tech_cost_multiplier = true,
+        },
+        {
+            type = 'technology',
+            name = 'worker-robot-battery-1',
+            icon = '__factorio-1.5__/graphics/technology/worker-robot-battery.png',
+            icon_size = 128,
+            effects = {
+                {
+                    type = 'worker-robot-battery',
+                    modifier = 0.05,
+                },
+            },
+            prerequisites = { 'robotics' },
+            unit = {
+                count_formula = 'L*50',
+                ingredients = {
+                    { 'automation-science-pack', 1 },
+                    { 'logistic-science-pack', 1 },
+                    { 'chemical-science-pack', 1 },
+                },
+                time = 60,
+            },
+            upgrade = true,
+            max_level = 2,
+        },
+        {
+            type = 'technology',
+            name = 'worker-robot-battery-3',
+            icon = '__factorio-1.5__/graphics/technology/worker-robot-battery.png',
+            icon_size = 128,
+            effects = {
+                {
+                    type = 'worker-robot-battery',
+                    modifier = 0.05,
+                },
+            },
+            prerequisites = { 'worker-robot-battery-1', 'utility-science-pack' },
+            unit = {
+                count_formula = '(L-2)*100+50',
+                ingredients = {
+                    { 'automation-science-pack', 1 },
+                    { 'logistic-science-pack', 1 },
+                    { 'chemical-science-pack', 1 },
+                    { 'utility-science-pack', 1 },
+                },
+                time = 60,
+            },
+            upgrade = true,
+            max_level = 4,
+        },
+        {
+            type = 'technology',
+            name = 'worker-robot-battery-5',
+            icon = '__factorio-1.5__/graphics/technology/worker-robot-battery.png',
+            icon_size = 128,
+            effects = {
+                {
+                    type = 'worker-robot-battery',
+                    modifier = 0.05,
+                },
+            },
+            prerequisites = { 'worker-robot-battery-3', 'production-science-pack' },
+            unit = {
+                count = 500,
+                ingredients = {
+                    { 'automation-science-pack', 1 },
+                    { 'logistic-science-pack', 1 },
+                    { 'chemical-science-pack', 1 },
+                    { 'production-science-pack', 1 },
+                    { 'utility-science-pack', 1 },
+                },
+                time = 60,
+            },
+            upgrade = true,
+        },
+        {
+            type = 'technology',
+            name = 'worker-robot-battery-6',
+            icon = '__factorio-1.5__/graphics/technology/worker-robot-battery.png',
+            icon_size = 128,
+            effects = {
+                {
+                    type = 'worker-robot-battery',
+                    modifier = 0.05,
+                },
+            },
+            prerequisites = { 'worker-robot-battery-5', 'space-science-pack' },
+            unit = {
+                count_formula = '2^(L-5)*1000',
+                ingredients = {
+                    { 'automation-science-pack', 1 },
+                    { 'logistic-science-pack', 1 },
+                    { 'chemical-science-pack', 1 },
+                    { 'production-science-pack', 1 },
+                    { 'utility-science-pack', 1 },
+                    { 'space-science-pack', 1 },
+                },
+                time = 60,
+            },
+            upgrade = true,
+            max_level = 'infinite',
+            ignore_tech_cost_multiplier = true,
+        },
+        {
+            type = 'technology',
+            name = 'artillery-shell-damage-1',
+            icons = util.technology_icon_constant_damage('__space-age__/graphics/technology/artillery-damage.png'),
+            effects = {
+                {
+                    type = 'ammo-damage',
+                    ammo_category = 'artillery-shell',
+                    modifier = 0.1,
+                },
+            },
+            prerequisites = { 'artillery' },
+            unit = {
+                count_formula = '2^(L-1)*1000',
+                ingredients = {
+                    { 'automation-science-pack', 1 },
+                    { 'logistic-science-pack', 1 },
+                    { 'chemical-science-pack', 1 },
+                    { 'military-science-pack', 1 },
+                    { 'utility-science-pack', 1 },
+                    { 'space-science-pack', 1 },
+                },
+                time = 60,
+            },
+            max_level = 'infinite',
+            ignore_tech_cost_multiplier = true,
+            order = 'military',
+        },
+        {
+            type = 'technology',
+            name = 'low-density-structure-productivity',
+            icons = util.technology_icon_constant_recipe_productivity('__space-age__/graphics/technology/low-density-structure-productivity.png'),
+            icon_size = 256,
+            effects = {
+                {
+                    type = 'change-recipe-productivity',
+                    recipe = 'low-density-structure',
+                    change = 0.1,
+                },
+                {
+                    type = 'change-recipe-productivity',
+                    recipe = 'casting-low-density-structure',
+                    change = 0.1,
+                },
+            },
+            prerequisites = { 'utility-science-pack' },
+            unit = {
+                count_formula = '1.5^L*1000',
+                ingredients = {
+                    { 'automation-science-pack', 1 },
+                    { 'logistic-science-pack', 1 },
+                    { 'chemical-science-pack', 1 },
+                    { 'utility-science-pack', 1 },
+                },
+                time = 60,
+            },
+            max_level = recipe_productivity_limit,
+            ignore_tech_cost_multiplier = true,
+            upgrade = true,
+            order = 'productivity',
+        },
+        {
+            type = 'technology',
+            name = 'plastic-bar-productivity',
+            icons = util.technology_icon_constant_recipe_productivity('__space-age__/graphics/technology/plastics-productivity.png'),
+            icon_size = 256,
+            effects = {
+                {
+                    type = 'change-recipe-productivity',
+                    recipe = 'plastic-bar',
+                    change = 0.1,
+                },
+            },
+            prerequisites = { 'production-science-pack' },
+            unit = {
+                count_formula = '1.5^L*1000',
+                ingredients = {
+                    { 'automation-science-pack', 1 },
+                    { 'logistic-science-pack', 1 },
+                    { 'chemical-science-pack', 1 },
+                    { 'production-science-pack', 1 },
+                },
+                time = 60,
+            },
+            max_level = recipe_productivity_limit,
+            ignore_tech_cost_multiplier = true,
+            upgrade = true,
+            order = 'productivity',
+        },
+        {
+            type = 'technology',
+            name = 'processing-unit-productivity',
+            icons = util.technology_icon_constant_recipe_productivity('__space-age__/graphics/technology/processing-unit-productivity.png'),
+            icon_size = 256,
+            effects = {
+                {
+                    type = 'change-recipe-productivity',
+                    recipe = 'processing-unit',
+                    change = 0.1,
+                },
+            },
+            prerequisites = { 'utility-science-pack' },
+            unit = {
+                count_formula = '1.5^L*1000',
+                ingredients = {
+                    { 'automation-science-pack', 1 },
+                    { 'logistic-science-pack', 1 },
+                    { 'chemical-science-pack', 1 },
+                    { 'utility-science-pack', 1 },
+                },
+                time = 60,
+            },
+            max_level = recipe_productivity_limit,
+            ignore_tech_cost_multiplier = true,
+            upgrade = true,
+            order = 'productivity',
+        },
+        {
+            type = 'technology',
+            name = 'railgun-damage-1',
+            icons = util.technology_icon_constant_damage('__space-age__/graphics/technology/railgun-damage.png'),
+            effects = {
+                {
+                    type = 'ammo-damage',
+                    ammo_category = 'railgun',
+                    modifier = 0.4,
+                },
+            },
+            prerequisites = { 'railgun' },
+            unit = {
+                count_formula = '2^(L-1)*1000',
+                ingredients = {
+                    { 'automation-science-pack', 1 },
+                    { 'logistic-science-pack', 1 },
+                    { 'chemical-science-pack', 1 },
+                    { 'military-science-pack', 1 },
+                    { 'utility-science-pack', 1 },
+                    { 'space-science-pack', 1 },
+                },
+                time = 60,
+            },
+            max_level = 'infinite',
+            ignore_tech_cost_multiplier = true,
+            order = 'b',
+        },
+        {
+            type = 'technology',
+            name = 'railgun-shooting-speed-1',
+            icons = util.technology_icon_constant_speed('__space-age__/graphics/technology/railgun-shooting-speed.png'),
+            effects = {
+                {
+                    type = 'gun-speed',
+                    ammo_category = 'railgun',
+                    icon = '__space-age__/graphics/icons/railgun-ammo.png',
+                    icon_size = 64,
+                    modifier = 0.15,
+                },
+            },
+            prerequisites = { 'railgun' },
+            unit = {
+                count_formula = '2^(L-1)*1000',
+                ingredients = {
+                    { 'automation-science-pack', 1 },
+                    { 'logistic-science-pack', 1 },
+                    { 'chemical-science-pack', 1 },
+                    { 'military-science-pack', 1 },
+                    { 'utility-science-pack', 1 },
+                    { 'space-science-pack', 1 },
+                },
+                time = 60,
+            },
+            max_level = 'infinite',
+            ignore_tech_cost_multiplier = true,
+            order = 'c',
+        },
+        {
+            type = 'technology',
+            name = 'research-productivity',
+            icon = '__space-age__/graphics/technology/research-productivity.png',
+            icon_size = 256,
+            icon_size = 256,
+            effects = {
+                {
+                    type = 'laboratory-productivity',
+                    modifier = 0.10,
+                },
+            },
+            prerequisites = { 'biolab' },
+            unit = {
+                count_formula = '1.2^L*1000',
+                ingredients = {
+                    { 'automation-science-pack', 1 },
+                    { 'logistic-science-pack', 1 },
+                    { 'military-science-pack', 1 },
+                    { 'chemical-science-pack', 1 },
+                    { 'production-science-pack', 1 },
+                    { 'utility-science-pack', 1 },
+                    { 'space-science-pack', 1 },
+                },
+                time = 120,
+            },
+            max_level = 'infinite',
+            ignore_tech_cost_multiplier = true,
+            upgrade = true,
+            order = 'productivity',
+        },
+        {
+            type = 'technology',
+            name = 'rocket-part-productivity',
+            icons = util.technology_icon_constant_recipe_productivity('__space-age__/graphics/technology/rocket-part-productivity.png'),
+            icon_size = 256,
+            effects = {
+                {
+                    type = 'change-recipe-productivity',
+                    recipe = 'rocket-part',
+                    change = 0.1,
+                },
+            },
+            prerequisites = { 'space-science-pack' },
+            unit = {
+                count_formula = '1.5^L*2000',
+                ingredients = {
+                    { 'automation-science-pack', 1 },
+                    { 'logistic-science-pack', 1 },
+                    { 'chemical-science-pack', 1 },
+                    { 'production-science-pack', 1 },
+                    { 'utility-science-pack', 1 },
+                    { 'space-science-pack', 1 },
+                },
+                time = 60,
+            },
+            max_level = recipe_productivity_limit,
+            ignore_tech_cost_multiplier = true,
+            upgrade = true,
+            order = 'productivity',
+        },
+        {
+            type = 'technology',
+            name = 'steel-plate-productivity',
+            icons = util.technology_icon_constant_recipe_productivity('__space-age__/graphics/technology/steel-plate-productivity.png'),
+            icon_size = 256,
+            effects = {
+                {
+                    type = 'change-recipe-productivity',
+                    recipe = 'steel-plate',
+                    change = 0.1,
+                },
+                {
+                    type = 'change-recipe-productivity',
+                    recipe = 'casting-steel',
+                    change = 0.1,
+                },
+            },
+            prerequisites = { 'production-science-pack' },
+            unit = {
+                count_formula = '1.5^L*1000',
+                ingredients = {
+                    { 'automation-science-pack', 1 },
+                    { 'logistic-science-pack', 1 },
+                    { 'chemical-science-pack', 1 },
+                    { 'production-science-pack', 1 },
+                },
+                time = 60,
+            },
+            max_level = recipe_productivity_limit,
+            ignore_tech_cost_multiplier = true,
+            upgrade = true,
+            order = 'productivity',
+        },
+        {
+            type = 'technology',
+            name = 'worker-robots-speed-7',
+            icons = util.technology_icon_constant_movement_speed('__base__/graphics/technology/worker-robots-speed.png'),
+            effects = {
+                {
+                    type = 'worker-robot-speed',
+                    modifier = 0.65,
+                },
+            },
+            prerequisites = { 'worker-robots-speed-6', 'space-science-pack' },
+            unit = {
+                count_formula = '2^(L-6)*1000',
+                ingredients = {
+                    { 'automation-science-pack', 1 },
+                    { 'logistic-science-pack', 1 },
+                    { 'chemical-science-pack', 1 },
+                    { 'production-science-pack', 1 },
+                    { 'utility-science-pack', 1 },
+                    { 'space-science-pack', 1 },
+                },
+                time = 60,
+            },
+            max_level = 'infinite',
+            ignore_tech_cost_multiplier = true,
+            upgrade = true,
+            order = 'all',
+        },
+        {
+            type = 'technology',
+            name = 'rocket-fuel-productivity',
+            icons = util.technology_icon_constant_recipe_productivity('__space-age__/graphics/technology/rocket-fuel-productivity.png'),
+            icon_size = 256,
+            effects = {
+                {
+                    type = 'change-recipe-productivity',
+                    recipe = 'rocket-fuel',
+                    change = 0.1,
+                },
+                {
+                    type = 'change-recipe-productivity',
+                    recipe = 'ammonia-rocket-fuel',
+                    change = 0.1,
+                },
+            },
+            prerequisites = { 'space-science-pack' },
+            unit = {
+                count_formula = '1.5^L*1000',
+                ingredients = {
+                    { 'automation-science-pack', 1 },
+                    { 'logistic-science-pack', 1 },
+                    { 'chemical-science-pack', 1 },
+                    { 'production-science-pack', 1 },
+                    { 'utility-science-pack', 1 },
+                    { 'space-science-pack', 1 },
+                },
+                time = 60,
+            },
+            max_level = recipe_productivity_limit,
+            ignore_tech_cost_multiplier = true,
+            upgrade = true,
+            order = 'productivity',
         },
     })
 end
