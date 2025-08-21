@@ -1,4 +1,4 @@
-if not settings.startup['f15-quality-trains'].value then
+if not settings.startup['f15-quality-wagons'].value then
     return
 end
 

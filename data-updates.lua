@@ -13,7 +13,7 @@ require 'resources/fusion-fuel'
 require 'resources/loaders'
 require 'resources/map-gen-presets'
 require 'resources/mixed-ores'
-require 'resources/quality-trains'
+require 'resources/quality-wagons'
 
 require 'compatibility/aai-loaders'
 require 'compatibility/se-space-trains'
