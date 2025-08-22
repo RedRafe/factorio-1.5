@@ -5295,7 +5295,7 @@ return function()
                     recipe = 'carbon-fiber',
                 },
             },
-            prerequisites = { 'tungsten-carbide' },
+            prerequisites = { 'tungsten-carbide', 'utility-science-pack' },
             unit = {
                 count = 500,
                 ingredients = {
@@ -5303,6 +5303,7 @@ return function()
                     { 'logistic-science-pack', 1 },
                     { 'chemical-science-pack', 1 },
                     { 'production-science-pack', 1 },
+                    { 'utility-science-pack', 1 },
                 },
                 time = 60,
             },
