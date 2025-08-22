@@ -267,7 +267,7 @@ return function()
         {
             type = 'recipe',
             name = 'sulfuric-acid',
-            category = 'cryogenics-or-assembling',
+            category = 'chemistry',
             subgroup = 'fluid-recipes',
             order = 'c[oil-products]-b[sulfuric-acid]',
             energy_required = 1,
@@ -291,7 +291,7 @@ return function()
         {
             type = 'recipe',
             name = 'plastic-bar',
-            category = 'cryogenics-or-assembling',
+            category = 'chemistry',
             energy_required = 1,
             enabled = false,
             auto_recycle = false,
@@ -386,7 +386,7 @@ return function()
         {
             type = 'recipe',
             name = 'sulfur',
-            category = 'cryogenics-or-assembling',
+            category = 'chemistry',
             energy_required = 1,
             enabled = false,
             auto_recycle = false,
