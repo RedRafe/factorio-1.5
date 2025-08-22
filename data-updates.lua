@@ -17,3 +17,4 @@ require 'resources/quality-wagons'
 
 require 'compatibility/aai-loaders'
 require 'compatibility/se-space-trains'
+require 'compatibility/train-loader'
