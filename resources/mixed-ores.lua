@@ -30,18 +30,18 @@ local precision = 14
 
 for i, ore in pairs({
     { name = 'iron-ore',   weight = 2 / precision },
-    { name = 'copper-ore', weight = 1 / precision },
+    { name = 'copper-ore', weight = 2 / precision },
     { name = 'iron-ore',   weight = 2 / precision },
-    { name = 'stone',      weight = 3 / precision },
+    { name = 'stone',      weight = 1 / precision },
     { name = 'copper-ore', weight = 1 / precision },
     { name = 'iron-ore',   weight = 2 / precision },
     { name = 'copper-ore', weight = 1 / precision },
     { name = 'iron-ore',   weight = 2 / precision },
     { name = 'coal',       weight = 4 / precision },
     { name = 'iron-ore',   weight = 2 / precision },
-    { name = 'copper-ore', weight = 1 / precision },
+    { name = 'copper-ore', weight = 2 / precision },
     { name = 'iron-ore',   weight = 2 / precision },
-    { name = 'stone',      weight = 3 / precision },
+    { name = 'stone',      weight = 2 / precision },
     { name = 'copper-ore', weight = 1 / precision },
     { name = 'coal',       weight = 4 / precision },
 }) do
