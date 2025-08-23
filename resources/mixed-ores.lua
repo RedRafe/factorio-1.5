@@ -9,8 +9,8 @@ data:extend({
         richness = true,
         order = 'm-a',
         category = 'resource',
-        localised_name = {'', '[img=utility/resource_editor_icon] ', { 'entity-name.mixed-ore' }},
-    }
+        localised_name = { '', '[img=utility/resource_editor_icon] ', { 'entity-name.mixed-ore' } },
+    },
 })
 data.raw.planet.nauvis.map_gen_settings.autoplace_controls['mixed-ore'] = {}
 
@@ -47,16 +47,18 @@ for i, ore in pairs({
 }) do
     local base = table.deepcopy(data.raw.resource[ore.name])
     base.name = f('mixed-%d-%s', i, ore.name)
-    base.localised_name = { 'entity-name.'..ore.name }
+    base.localised_name = { 'entity-name.' .. ore.name }
     base.hidden_in_factoriopedia = true
     base.autoplace = {
-        probability_expression = '(100 * var(\'control:mixed-ore:richness\')) * ((lower < ore) & (ore < upper))',
-        richness_expression = 'random_penalty{ x = x, y = y, source = 10000, seed = map_seed, amplitude = 3000}',
+        probability_expression = 'mixed_probability * ((lower < ore) & (ore < upper))',
+        richness_expression = 'random_penalty{ x = x, y = y, source = mixed_richness, seed = map_seed, amplitude = 3000}',
         local_expressions = {
-            lower = f("(%f * var(\'control:mixed-ore:size\'))", tot_weight),
-            upper = f("(%f * var(\'control:mixed-ore:size\'))", tot_weight + ore.weight),
+            mixed_probability = '(100 * var(\'control:mixed-ore:richness\'))',
+            mixed_richness = '1600 + ((10 * distance) * var(\'control:mixed-ore:richness\'))',
+            lower = f('(%f * var(\'control:mixed-ore:size\'))', tot_weight),
+            upper = f('(%f * var(\'control:mixed-ore:size\'))', tot_weight + ore.weight),
             ore = f('clamp(%s, -1, 2)', expr),
-        }
+        },
     }
 
     data:extend({ base })
