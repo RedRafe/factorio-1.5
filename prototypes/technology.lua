@@ -5613,7 +5613,7 @@ return function()
             },
             prerequisites = { 'calcite-processing', 'tungsten-carbide' },
             unit = {
-                count = 500,
+                count = 2000,
                 ingredients = {
                     { 'automation-science-pack', 1 },
                     { 'logistic-science-pack', 1 },
